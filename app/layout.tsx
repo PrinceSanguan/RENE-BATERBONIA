@@ -15,10 +15,11 @@ const cormorant = Cormorant_Garamond({
     display: 'swap',
 });
 
-/** Absolute base for OG links: an explicit override, else the Vercel production domain. */
-const siteUrl =
-    process.env.NEXT_PUBLIC_SITE_URL ??
-    (process.env.VERCEL_PROJECT_PRODUCTION_URL ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}` : 'http://localhost:3000');
+/**
+ * Absolute base for the canonical and OG links Facebook reads. Pinned to the public domain:
+ * Vercel's VERCEL_PROJECT_PRODUCTION_URL resolves to the auto-generated *-smoky.vercel.app alias instead.
+ */
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://baterbonia.vercel.app';
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteUrl),
